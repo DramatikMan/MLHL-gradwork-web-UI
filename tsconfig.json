@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        // Type Checking
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strict": true,
+        // Modules
+        "baseUrl": "app/src",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "paths": {"~/*": ["./*"]},
+        "resolveJsonModule": true,
+        // Emit
+        "noEmit": true,
+        // JavaScript Support
+        "allowJs": true,
+        // Interop Constraints
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        // Language and Environment
+        "jsx": "react-jsx",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "target": "ES6",
+        // Completeness
+        "skipLibCheck": true
+    },
+    "include": ["app/src"],
+    "references": [{"path": "./vite.tsconfig.json"}]
+}

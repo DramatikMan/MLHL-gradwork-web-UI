@@ -1,0 +1,8 @@
+### ~ environment ~ ###
+node_modules
+
+### ~ private ~ ###
+*.env*
+
+### ~ Docker ~ ###
+/*.y*ml
