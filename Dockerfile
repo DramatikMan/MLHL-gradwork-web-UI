@@ -8,7 +8,7 @@ COPY app app
 
 ##################
 FROM base AS builder
-COPY tsconfig.json vite.config.ts vite.tsconfig.json .eslintrc.json ./
+COPY tsconfig.json vite.config.ts vite.tsconfig.json .eslintrc.json .prettierrc.json ./
 RUN bash -c 'if [[ "$build_env" == "dev" ]]; then npm run build:dev; else npm run build; fi'
 
 ##################
