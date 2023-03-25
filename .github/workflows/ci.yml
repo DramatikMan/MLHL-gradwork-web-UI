@@ -66,21 +66,28 @@ jobs:
 
     steps:
 
-      - name: Executing remote SSH commands
+      - name: Clone repository
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          script_stop: true
           script: |
-            rm -rf ${{ github.event.repository.name }} || echo "Nothing to remove."
-
             git clone \
               -b ${{ github.ref_name }} \
               --depth=1 \
               --single-branch \
               git@github.com:${{ github.repository }}.git ${{ github.event.repository.name }}
-
+      
+      - name: Clone folder
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script_stop: true
+          script: |
             helm dependency update ${{ github.event.repository.name }}/chart
 
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
@@ -91,4 +98,11 @@ jobs:
               --set 'deployment.image.tag=${{ github.sha }}' \
               gwui ${{ github.event.repository.name }}/chart
 
-            rm -rf ${{ github.event.repository.name }}
+      - name: Clean up artifacts
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script_stop: true
+          script: rm -rf ${{ github.event.repository.name }}
