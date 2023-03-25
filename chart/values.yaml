@@ -5,7 +5,11 @@ deployment:
 
   ingress:
     hosts:
-      - host: localhost
+      - host: gw.sergeypavlov.dev
         paths:
           - path: /
             pathType: Prefix
+    tls:
+    - secretName: tls.sergeypavlov.dev
+      hosts:
+        - gw.sergeypavlov.dev
