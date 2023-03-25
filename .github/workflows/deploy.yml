@@ -1,0 +1,23 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  deploy:
+
+    name: Deploy to remote via SSH
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Executing remote SSH commands
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            whoami
+            ls -la
