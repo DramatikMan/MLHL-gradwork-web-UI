@@ -80,7 +80,7 @@ jobs:
               --single-branch \
               git@github.com:${{ github.repository }}.git ${{ github.event.repository.name }}
       
-      - name: Clone folder
+      - name: Upgrade Helm release
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.HOST }}
