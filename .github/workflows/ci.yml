@@ -68,7 +68,6 @@ jobs:
 
       - name: Executing remote SSH commands
         uses: appleboy/ssh-action@v0.1.8
-        if: steps.get-latest-sha.outcome == 'success'
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
