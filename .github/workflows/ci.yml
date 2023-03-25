@@ -95,7 +95,9 @@ jobs:
 
             helm dependency update ${{ github.event.repository.name }}/chart
 
-            KUBECONFIG=/etc/rancher/k3s/k3s.yaml; helm upgrade \
+            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+
+            helm upgrade \
               --install \
               --atomic \
               --set 'deployment.image.tag=${{ env.LATEST_IMAGE_SHA }}' \
