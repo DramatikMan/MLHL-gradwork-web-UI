@@ -19,10 +19,7 @@ jobs:
           python -c
           "import requests;
           url = 'https://api.github.com/user/packages/container/${{ github.event.repository.name }}/versions';
-          headers = dict(
-              Authorization='token ${{ secrets.GHCR_PAT }}',
-              Accept='application/vnd.github.v3+json'
-          );
+          headers = dict(Authorization='token ${{ secrets.GHCR_PAT }}', Accept='application/vnd.github.v3+json');
           resp = requests.get(url, headers=headers);
           print(f'IMAGE_EXISTED={1 if resp.status_code == 200 else 0}');
           print(f'''LATEST_IMAGE_ID={resp.json()[0]['id'] if resp.status_code == 200 else None}''');"
@@ -69,14 +66,26 @@ jobs:
 
     steps:
 
+      - name: Get latest image SHA
+        id: get-latest-sha
+        run: >
+          python -c
+          "import requests;
+          url = 'https://api.github.com/user/packages/container/${{ github.event.repository.name }}/versions';
+          headers = dict(Authorization='token ${{ secrets.GHCR_PAT }}', Accept='application/vnd.github.v3+json');
+          resp = requests.get(url, headers=headers);
+          print(f'''LATEST_IMAGE_SHA={resp.json()[0]['name']}''');"
+          >> ${GITHUB_ENV}
+
       - name: Executing remote SSH commands
         uses: appleboy/ssh-action@v0.1.8
+        if: steps.get-latest-sha.outcome != 'success'
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            rm -rf ${{ github.event.repository.name }}
+            rm -rf ${{ github.event.repository.name }} || echo "Nothing to remove."
 
             git clone \
               -b ${{ github.ref_name }} \
@@ -86,10 +95,10 @@ jobs:
 
             helm dependency update ${{ github.event.repository.name }}/chart
 
-            helm upgrade \
+            KUBECONFIG=/etc/rancher/k3s/k3s.yaml; helm upgrade \
               --install \
               --atomic \
-              --set 'deployment.image.tag=${{ github.sha }}' \
+              --set 'deployment.image.tag=${{ env.LATEST_IMAGE_SHA }}' \
               gwui ${{ github.event.repository.name }}/chart
 
             rm -rf ${{ github.event.repository.name }}
