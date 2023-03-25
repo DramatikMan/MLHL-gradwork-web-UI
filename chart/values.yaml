@@ -1,0 +1,11 @@
+deployment:
+  image:
+    repository: ghcr.io/dramatikman/mlhl-gradwork-web-ui
+    tag: latest
+
+  ingress:
+    hosts:
+      - host: localhost
+        paths:
+          - path: /
+            pathType: Prefix
