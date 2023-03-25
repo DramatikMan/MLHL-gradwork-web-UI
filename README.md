@@ -2,6 +2,6 @@
 
 ---
 
-## Смежные проекты
+## Related projects
 
 - [API server](https://github.com/DramatikMan/MLHL-gradwork-server)
