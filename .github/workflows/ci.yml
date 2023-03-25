@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build_and_update_latest_image:
+  build:
 
     name: Build and update latest image
     runs-on: ubuntu-latest
