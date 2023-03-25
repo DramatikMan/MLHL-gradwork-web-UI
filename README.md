@@ -1,4 +1,4 @@
-![CI](https://github.com/DramatikMan/MLHL-gradwork-web-UI/actions/workflows/CI.yml/badge.svg)
+![CI](https://github.com/DramatikMan/MLHL-gradwork-web-UI/actions/workflows/ci.yml/badge.svg)
 
 ---
 
