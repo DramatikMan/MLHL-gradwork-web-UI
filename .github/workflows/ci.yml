@@ -89,7 +89,6 @@ jobs:
           script_stop: true
           script: |
             helm dependency build ${{ github.event.repository.name }}/chart
-
             export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
             helm upgrade \
