@@ -1,6 +1,6 @@
 dependencies:
 - name: k3s-deployment
   repository: https://dramatikman.github.io/charts
-  version: 0.1.1
-digest: sha256:fd000e52497d97fe77b19500dd0bae51db7712018d3e90c4843105bc3f3215bb
-generated: "2023-03-25T15:40:46.497585385+03:00"
+  version: 0.1.4
+digest: sha256:21a0c61559c7f39d77dcfa9561a6b8810e8b6b0e3e87e78611162962c4666cc5
+generated: "2023-03-26T13:33:24.832880487+03:00"
