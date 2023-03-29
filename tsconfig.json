@@ -14,7 +14,7 @@
         "strict": true,
         // Modules
         "baseUrl": "app/src",
-        "module": "NodeNext",
+        "module": "ESNext",
         "moduleResolution": "node",
         "paths": {"~/*": ["./*"]},
         "resolveJsonModule": true,
@@ -26,7 +26,7 @@
         "isolatedModules": true,
         // Language and Environment
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "target": "ES6",
+        "target": "ESNext",
         // Completeness
         "skipLibCheck": true
     },

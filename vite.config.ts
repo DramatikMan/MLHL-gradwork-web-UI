@@ -16,7 +16,7 @@ export default defineConfig({
         drop: ["console"],
     },
     resolve: {
-        alias: {"~": path.resolve(__dirname, "app/src")},
+        alias: {"😺": path.resolve(__dirname, "app/src")},
     },
     plugins: [
         vue(),

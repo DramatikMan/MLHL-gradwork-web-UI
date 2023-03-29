@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
+import config from "./core/config";
+
+const URL = config.get("BACKEND_API_URL");
 </script>
 
 <template>
-    <div>
+    <div :URL="URL">
         <a href="https://vitejs.dev" target="_blank">
             <img src="/vite.svg" class="logo" alt="Vite logo" />
         </a>
@@ -11,7 +14,7 @@ import HelloWorld from "./components/HelloWorld.vue";
             <img src="/vue.svg" class="logo vue" alt="Vue logo" />
         </a>
     </div>
-    <HelloWorld msg="Vite + Vue" />
+    <HelloWorld :text="URL" />
 </template>
 
 <style scoped>
