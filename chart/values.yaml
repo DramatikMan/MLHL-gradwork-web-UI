@@ -34,7 +34,7 @@ main:
 
   persistentVolumes:
     - name: config-volume
-      mountPath: /tmp/config-volume/config.js
+      mountPath: /usr/share/nginx/html/config.js
       subPath: config.js
 
   livenessProbe:
