@@ -13,3 +13,46 @@ main:
     - secretName: tls.sergeypavlov.dev
       hosts:
         - gw.sergeypavlov.dev
+
+  envVars:
+    - secret: gwui-main
+
+  initContainers:
+    - name: update-config
+      image:
+        repository: dibi/envsubst
+        tag: latest
+        pullPolicy: IfNotPresent
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          envsubst <<EOF > /config-volume/config.js
+          window.config = {
+              BACKEND_API_URL: "$BACKEND_API_URL",
+          };
+          EOF
+
+  persistentVolumes:
+    - name: config-volume
+      mountPath: /usr/share/nginx/html/config.js
+      subPath: config.js
+
+  livenessProbe:
+    httpGet:
+      path: /index.html
+      port: http
+    initialDelaySeconds: 5
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /index.html
+      port: http
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
+    successThreshold: 1
+    failureThreshold: 3
+    periodSeconds: 10

@@ -94,7 +94,8 @@ jobs:
             helm upgrade \
               --install \
               --atomic \
-              --set 'deployment.image.tag=${{ github.sha }}' \
+              --set 'main.image.tag=${{ github.sha }}' \
+              --set-json 'main.secrets=${{ secrets.SECRETS }}' \
               gwui ${{ github.event.repository.name }}/chart
 
       - name: Clean up artifacts
