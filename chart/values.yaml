@@ -3,6 +3,12 @@ main:
     repository: ghcr.io/dramatikman/mlhl-gradwork-web-ui
     tag: latest
 
+  command: ["/bin/sh", "-c"]
+  args: |
+    rm /usr/share/nginx/html/config.js \
+    && ln -sfT /tmp/config-volume/config.js /usr/share/nginx/html/config.js
+    && nginx -g daemon off
+
   ingress:
     hosts:
       - host: gw.sergeypavlov.dev
@@ -26,7 +32,7 @@ main:
       command: ["/bin/sh", "-c"]
       args:
         - |
-          envsubst <<EOF > /config-volume/config.js
+          envsubst <<EOF >  /config-volume/config.js
           window.config = {
               BACKEND_API_URL: "$BACKEND_API_URL",
           };
@@ -34,8 +40,7 @@ main:
 
   persistentVolumes:
     - name: config-volume
-      mountPath: /usr/share/nginx/html/config.js
-      subPath: config.js
+      mountPath: /tmp/config-volume
 
   livenessProbe:
     httpGet:
