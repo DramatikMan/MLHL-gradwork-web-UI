@@ -15,4 +15,3 @@ RUN bash -c 'if [[ "$build_env" == "dev" ]]; then npm run build:dev; else npm ru
 FROM nginxinc/nginx-unprivileged:1.23.3-alpine-slim AS server
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
-RUN chown $UID:0 /usr/share/nginx/html/config.js && chmod g+w /usr/share/nginx/html/config.js
