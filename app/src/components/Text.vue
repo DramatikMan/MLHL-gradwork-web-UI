@@ -5,5 +5,3 @@ defineProps<{text: string}>();
 <template>
     <h1>{{ text }}</h1>
 </template>
-
-<style scoped></style>
