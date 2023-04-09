@@ -7,5 +7,8 @@ node_modules
 ### ~ Docker ~ ###
 /*.y*ml
 
+### ~ development ~ ###
+/scripts
+
 ### ~ Helm ~ ###
 chart/**/*.tgz
