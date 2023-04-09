@@ -16,16 +16,14 @@
     },
     "plugins": ["@typescript-eslint"],
     "rules": {
-        "eol-last": [2, "always"],
-        "max-len": [2, {"code": 100}],
-        "semi-style": [2, "last"],
+        "eol-last": ["error", "always"],
+        "max-len": ["error", {"code": 100}],
+        "semi-style": ["error", "last"],
         "@typescript-eslint/strict-boolean-expressions": [
-            2,
-            {
-                "allowNumber": false,
-                "allowString": false
-            }
-        ]
+            "error",
+            {"allowNumber": false, "allowString": false}
+        ],
+        "vue/multi-word-component-names": ["off"]
     },
     "ignorePatterns": ["**/*.css"],
     "env": {"browser": true}

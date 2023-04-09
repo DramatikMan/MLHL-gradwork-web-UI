@@ -16,7 +16,7 @@
         "baseUrl": "app/src",
         "module": "ESNext",
         "moduleResolution": "node",
-        "paths": {"~/*": ["./*"]},
+        "paths": {"😺/*": ["./*"]},
         "resolveJsonModule": true,
         // Emit
         "noEmit": true,
