@@ -1,20 +1,16 @@
 <script setup lang="ts">
+import {ref} from "vue";
+
 import config from "😺/core/config";
 
+let file = ref<File | null>(null);
 const imageUrl = `${config.get("BACKEND_API_URL")}/image`;
 
 async function onUpdate(files: File[]) {
     if (files.length === 0) return;
-    const data = new FormData();
-
-    for (const file of files) {
-        data.append("data", file);
-    }
-
-    const response = await fetch(imageUrl, {method: "POST", body: data});
-    const respData = await response.json();
-    const uid: number = respData["uid"];
-    console.log(uid);
+    const first = files[0];
+    if (first !== undefined) file = first;
+    console.log(file);
 }
 </script>
 
@@ -36,7 +32,7 @@ async function onUpdate(files: File[]) {
         </v-col>
         <v-responsive width="100%"></v-responsive>
         <v-col cols="9">
-            <v-btn type="submit" block>Submit</v-btn>
+            <v-btn block>Submit</v-btn>
         </v-col>
     </v-row>
 </template>

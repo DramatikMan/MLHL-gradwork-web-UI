@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import Centered from "./layout/Centered.vue";
+import Layout from "./layout/Layout.vue";
 import Upload from "./components/Upload.vue";
 </script>
 
 <template>
     <v-app id="gwui">
         <v-main>
-            <Centered>
+            <Layout>
                 <Upload />
-            </Centered>
+            </Layout>
         </v-main>
     </v-app>
 </template>
