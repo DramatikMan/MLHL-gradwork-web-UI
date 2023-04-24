@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import {useStore} from "😺/core/store";
+import * as store from "😺/core/store";
 
-const store = useStore();
+const state = store.use();
 </script>
 
 <template>
     <v-container fluid class="fill-height">
-        <v-row no-gutters></v-row>
+        <v-spacer />
         <v-main>
             <slot></slot>
         </v-main>
-        <v-row no-gutters> </v-row>
+        <v-spacer />
     </v-container>
-    <v-bottom-navigation v-model="store.view" grow color="primary">
+    <v-bottom-navigation v-model="state.tab" grow color="primary">
         <v-btn value="Browse">
             <v-icon>mdi-folder-open</v-icon>
             Browse

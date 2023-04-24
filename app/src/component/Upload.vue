@@ -9,7 +9,9 @@ const processing = ref(false);
 const isError = ref(false);
 const showAlert = ref(false);
 const alertText = ref<string | undefined>(undefined);
-const timeout = 5;
+
+const maxResultChecks = 5;
+const msCheckDelay = 1000;
 
 const imageURL = `${config.get("BACKEND_API_URL")}/image`;
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -35,10 +37,10 @@ async function onSubmit() {
     if (response.ok) {
         const data: T.Image = await response.json();
         const uid = data.uid;
-        let tries = 0;
+        let resultChecks = 0;
 
-        while (tries < timeout) {
-            tries++;
+        while (resultChecks < maxResultChecks) {
+            resultChecks++;
             const response = await fetch(`${imageURL}/${uid}`);
             const data: T.Image = await response.json();
 
@@ -50,12 +52,12 @@ async function onSubmit() {
                 break;
             }
 
-            await sleep(1000);
+            await sleep(msCheckDelay);
         }
 
         if (processing.value) {
             processing.value = false;
-            alertText.value = `Could not get a prediction within ${timeout} second(s)`;
+            alertText.value = `Could not get a prediction within ${maxResultChecks} second(s)`;
             isError.value = true;
             showAlert.value = true;
         }
@@ -71,19 +73,20 @@ async function onSubmit() {
 
 <template>
     <v-row justify="center">
-        <v-col cols="9">
+        <v-col cols="6" style="width: 50svh">
             <v-file-input
                 density="compact"
                 accept="image/jpeg"
-                label="Image"
                 prepend-icon="mdi-camera"
                 variant="solo"
                 hide-details
+                persistent-clear
                 @update:model-value="onUpdate"
-            ></v-file-input>
+            />
         </v-col>
-        <v-responsive width="100%"></v-responsive>
-        <v-col cols="9" :hidden="!showAlert">
+    </v-row>
+    <v-row justify="center">
+        <v-col cols="6" :hidden="!showAlert">
             <v-alert
                 v-model:model-value="showAlert"
                 closable
@@ -92,10 +95,11 @@ async function onSubmit() {
                 :type="isError ? 'error' : 'success'"
                 :title="isError ? 'Error' : 'Success'"
                 :text="alertText"
-            ></v-alert>
+            />
         </v-col>
-        <v-responsive width="100%"></v-responsive>
-        <v-col cols="9">
+    </v-row>
+    <v-row justify="center">
+        <v-col cols="6">
             <v-btn block :loading="processing" @click.prevent="onSubmit">Submit</v-btn>
         </v-col>
     </v-row>
