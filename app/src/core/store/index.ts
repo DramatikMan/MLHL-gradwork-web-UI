@@ -2,7 +2,11 @@ import {defineStore} from "pinia";
 
 type View = "Browse" | "Upload";
 
-export const useStore = defineStore("store", {
+interface Store {
+    view: View;
+}
+
+export const useStore = defineStore<"store", Store>("store", {
     state: () => ({view: "Browse"}),
     actions: {
         setView(value: View) {
