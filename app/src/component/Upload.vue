@@ -25,7 +25,7 @@ async function onUpdate(files: File[]) {
     if (first !== undefined) file.value = first;
 }
 
-async function onSubmit() {
+async function onPredict() {
     if (file.value === null) return;
 
     processing.value = true;
@@ -47,8 +47,6 @@ async function onSubmit() {
             if (data.category !== null) {
                 processing.value = false;
                 alertText.value = `Predicted category: ${data.category.title}`;
-                file.value = null;
-                showAlert.value = true;
                 break;
             }
 
@@ -56,31 +54,30 @@ async function onSubmit() {
         }
 
         if (processing.value) {
-            processing.value = false;
             alertText.value = `Could not get a prediction within ${maxResultChecks} second(s)`;
             isError.value = true;
-            showAlert.value = true;
         }
     } else {
         const err: T.APIError = await response.json();
-        processing.value = false;
-        isError.value = true;
         alertText.value = err.detail;
-        showAlert.value = true;
+        isError.value = true;
     }
+
+    processing.value = false;
+    showAlert.value = true;
 }
 </script>
 
 <template>
     <v-row justify="center">
-        <v-col cols="6" style="width: 50svh">
+        <v-col cols="6" style="width: 70svh">
             <v-file-input
-                density="compact"
                 accept="image/jpeg"
-                prepend-icon="mdi-camera"
-                variant="solo"
+                density="compact"
                 hide-details
                 persistent-clear
+                prepend-icon="mdi-camera"
+                variant="solo"
                 @update:model-value="onUpdate"
             />
         </v-col>
@@ -88,19 +85,19 @@ async function onSubmit() {
     <v-row justify="center">
         <v-col cols="6" :hidden="!showAlert">
             <v-alert
-                v-model:model-value="showAlert"
                 closable
-                :icon="isError ? 'mdi-emoticon-cry' : 'mdi-check-circle'"
                 density="compact"
-                :type="isError ? 'error' : 'success'"
-                :title="isError ? 'Error' : 'Success'"
+                :icon="isError ? 'mdi-emoticon-cry' : 'mdi-check-circle'"
+                :model-value="showAlert"
                 :text="alertText"
+                :title="isError ? 'Error' : 'Success'"
+                :type="isError ? 'error' : 'success'"
             />
         </v-col>
     </v-row>
     <v-row justify="center">
         <v-col cols="6">
-            <v-btn block :loading="processing" @click.prevent="onSubmit">Submit</v-btn>
+            <v-btn block :loading="processing" @click.prevent="onPredict">Get prediction</v-btn>
         </v-col>
     </v-row>
 </template>
