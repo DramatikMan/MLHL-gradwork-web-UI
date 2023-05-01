@@ -74,8 +74,9 @@ async function onPredict() {
             <v-file-input
                 accept="image/jpeg"
                 density="compact"
-                hide-details
+                hint="Select a square JPG image"
                 persistent-clear
+                persistent-hint
                 prepend-icon="mdi-camera"
                 variant="solo"
                 @update:model-value="onUpdate"

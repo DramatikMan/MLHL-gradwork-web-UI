@@ -9,6 +9,8 @@ const initial: t.State = {
     selectedQuantity: 1,
     selectedCategory: "Bean",
     requesting: false,
+    images: [],
+    showImages: false,
 };
 
 export const use: t.Store = defineStore("Browse", {
@@ -30,6 +32,12 @@ export const use: t.Store = defineStore("Browse", {
         },
         setRequesting(value: t.State["requesting"]) {
             this.requesting = value;
+        },
+        setImages(value: t.State["images"]) {
+            this.images = value;
+        },
+        setShowImages(value: t.State["showImages"]) {
+            this.showImages = value;
         },
     },
 });

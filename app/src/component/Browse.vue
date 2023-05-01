@@ -3,6 +3,8 @@ import config from "😺/core/config";
 import * as store from "😺/core/store/Browse";
 import * as T from "😺/types";
 
+import Images from "./Images.vue";
+
 const state = store.use();
 const apiURL = config.get("BACKEND_API_URL");
 
@@ -36,6 +38,8 @@ async function onRequest() {
 
     if (response.ok) {
         const data: string[] = await response.json();
+        state.setImages(data);
+        state.setShowImages(true);
         console.log(data);
     } else {
         const err: T.APIError = await response.json();
@@ -67,16 +71,23 @@ async function onRequest() {
                 <v-select
                     hint="Vegetable category"
                     persistent-hint
-                    :items="[Object.keys(state.categories)]"
+                    :items="Object.keys(state.categories)"
                     :model-value="state.selectedCategory"
                     @update:model-value="(v) => state.setSelectedCategory(v)"
                 />
             </v-col>
         </v-row>
         <v-row justify="center">
-            <v-col cols="10">
+            <v-col cols="10" style="width: 15svh">
                 <v-btn block :loading="state.requesting" @click.prevent="onRequest">Request</v-btn>
-            </v-col></v-row
-        >
+            </v-col>
+        </v-row>
+        <div v-if="state.showImages">
+            <v-row justify="center" :style="{marginTop: 'max(10px, 1svh)'}">
+                <v-col cols="10" style="width: 15svh">
+                    <Images :links="state.images" />
+                </v-col>
+            </v-row>
+        </div>
     </div>
 </template>
