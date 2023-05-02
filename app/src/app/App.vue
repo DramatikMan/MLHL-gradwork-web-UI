@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import Layout from "😺/layout/Layout.vue";
+import {Browse, Upload} from "😺/component";
 import * as store from "😺/core/store";
-
-import {Browse} from "./component";
-import {Upload} from "./component";
+import Layout from "./Layout.vue";
 
 const state = store.use();
 const tabs = {Browse, Upload};

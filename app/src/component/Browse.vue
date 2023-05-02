@@ -15,16 +15,16 @@ if (Object.keys(state.categories).length === 0) {
                 .json()
                 .then((data: T.Category[] | T.APIError) => {
                     if ("detail" in data) {
-                        console.log(`API Error: ${data.detail}`);
+                        console.error(data.detail);
                         state.setLoading(false);
                     } else {
                         state.setCategories(data);
                         state.setLoading(false);
                     }
                 })
-                .catch((e) => console.log(e));
+                .catch((e) => console.error(e));
         })
-        .catch((e) => console.log(e));
+        .catch((e) => console.error(e));
 }
 
 async function onRequest() {
@@ -44,6 +44,8 @@ async function onRequest() {
         state.setIsError(false);
         state.setShowImages(true);
     } else {
+        const err: T.APIError = await response.json();
+        console.error(err.detail);
         state.setShowImages(false);
         state.setIsError(true);
     }

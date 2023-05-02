@@ -8,7 +8,7 @@ import * as store from "😺/core/store/Upload";
 const state = store.use();
 const file = ref<File | null>(null);
 
-const maxResultChecks = 1;
+const maxResultChecks = 5;
 const msCheckDelay = 1000;
 
 const imageURL = `${config.get("BACKEND_API_URL")}/image`;
@@ -55,7 +55,8 @@ async function onPredict() {
         }
     } else {
         const err: T.APIError = await response.json();
-        state.setAlertText(err.detail);
+        console.error(err.detail);
+        state.setAlertText("Sorry, something went wrong");
         state.setIsError(true);
     }
 
@@ -82,15 +83,14 @@ async function onPredict() {
         <v-row justify="center">
             <v-col cols="6">
                 <v-alert
+                    v-model:model-value="state.showAlert"
                     closable
                     density="compact"
                     variant="tonal"
                     :icon="state.isError ? 'mdi-emoticon-cry' : 'mdi-check-circle'"
-                    :model-value="state.showAlert"
                     :text="state.alertText ?? undefined"
-                    :title="state.isError ? 'Sorry, I failed' : 'Success!'"
+                    :title="state.isError ? 'Error' : 'Success!'"
                     :type="state.isError ? 'error' : 'success'"
-                    @update:model-value="state.setShowAlert"
                 />
             </v-col>
         </v-row>
