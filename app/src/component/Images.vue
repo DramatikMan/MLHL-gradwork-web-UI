@@ -10,7 +10,12 @@ const props = defineProps<{links: string[]}>();
             cols="4"
         >
             <div :style="{display: 'flex'}">
-                <v-img cover :src="link.value" width="10rem" transition="expand-transition" />
+                <v-img
+                    height="min(224px, 10rem)"
+                    width="min(224px, 10rem)"
+                    transition="expand-transition"
+                    :src="link.value"
+                />
             </div>
         </v-col>
     </v-row>

@@ -10,6 +10,7 @@ const initial: t.State = {
     selectedCategory: "Bean",
     requesting: false,
     images: [],
+    isError: false,
     showImages: false,
 };
 
@@ -35,6 +36,9 @@ export const use: t.Store = defineStore("Browse", {
         },
         setImages(value: t.State["images"]) {
             this.images = value;
+        },
+        setIsError(value: t.State["isError"]) {
+            this.isError = value;
         },
         setShowImages(value: t.State["showImages"]) {
             this.showImages = value;

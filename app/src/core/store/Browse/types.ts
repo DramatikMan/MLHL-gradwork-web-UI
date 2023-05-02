@@ -9,6 +9,7 @@ export interface State {
     selectedCategory: string;
     requesting: boolean;
     images: string[];
+    isError: boolean;
     showImages: boolean;
 }
 
@@ -23,6 +24,7 @@ export interface Actions {
     setSelectedCategory: (value: State["selectedCategory"]) => void;
     setRequesting: (value: State["requesting"]) => void;
     setImages: (value: State["images"]) => void;
+    setIsError: (value: State["isError"]) => void;
     setShowImages: (value: State["showImages"]) => void;
 }
 

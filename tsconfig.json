@@ -25,11 +25,12 @@
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
         // Language and Environment
+        "jsx": "preserve",
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "target": "ESNext",
         // Completeness
         "skipLibCheck": true
     },
-    "include": ["app/src"],
+    "include": ["app/src/**/*.ts", "app/src/**/*.tsx", "app/src/**/*.vue"],
     "references": [{"path": "./vite.tsconfig.json"}]
 }
