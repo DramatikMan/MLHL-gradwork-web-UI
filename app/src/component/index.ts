@@ -1,2 +1,2 @@
-export {default as Browse} from "./Browse.vue";
-export {default as Upload} from "./Upload.vue";
+export {default as Browse} from "./Browse";
+export {default as Upload} from "./Upload";

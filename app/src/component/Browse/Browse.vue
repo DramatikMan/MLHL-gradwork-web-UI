@@ -3,7 +3,10 @@ import config from "😺/core/config";
 import * as store from "😺/core/store/Browse";
 import * as T from "😺/types";
 
+import Alert from "./Alert.vue";
 import Images from "./Images.vue";
+import * as Parameter from "./Parameter";
+import RequestButton from "./RequestButton.vue";
 
 const state = store.use();
 const apiURL = config.get("BACKEND_API_URL");
@@ -26,32 +29,6 @@ if (Object.keys(state.categories).length === 0) {
         })
         .catch((e) => console.error(e));
 }
-
-async function onRequest() {
-    state.setRequesting(true);
-
-    const response = await fetch(
-        [
-            `${apiURL}/image/sample`,
-            `?category_uid=${state.categories[state.selectedCategory]}`,
-            `&qty=${state.selectedQuantity}`,
-        ].join(""),
-    );
-
-    if (response.ok) {
-        const data: string[] = await response.json();
-        state.setImages(data);
-        state.setIsError(false);
-        state.setShowImages(true);
-    } else {
-        const err: T.APIError = await response.json();
-        console.error(err.detail);
-        state.setShowImages(false);
-        state.setIsError(true);
-    }
-
-    state.setRequesting(false);
-}
 </script>
 
 <template>
@@ -63,39 +40,21 @@ async function onRequest() {
     <div v-else>
         <v-row justify="center">
             <v-col cols="4" style="width: 15svh">
-                <v-select
-                    v-model:model-value="state.selectedQuantity"
-                    hint="Number of images to request"
-                    :items="[...Array(9).keys()].map((v) => v + 1)"
-                />
+                <Parameter.Quantity />
             </v-col>
             <v-col cols="6" style="width: 15svh">
-                <v-select
-                    v-model:model-value="state.selectedCategory"
-                    hint="Vegetable category"
-                    persistent-hint
-                    :items="Object.keys(state.categories)"
-                />
+                <Parameter.Category />
             </v-col>
         </v-row>
         <v-row justify="center">
             <v-col cols="10" style="width: 15svh">
-                <v-btn block :loading="state.requesting" @click.prevent="onRequest">Request</v-btn>
+                <RequestButton />
             </v-col>
         </v-row>
         <div v-if="state.isError || (state.showImages && state.images.length === 0)">
             <v-row justify="center" :style="{marginTop: 'max(10px, 1svh)'}">
                 <v-col cols="10" style="width: 15svh">
-                    <v-alert
-                        icon="mdi-emoticon-cry"
-                        variant="text"
-                        :title="
-                            state.isError
-                                ? 'Sorry, something went wrong'
-                                : 'Sorry, no images fitting your request were found'
-                        "
-                        :type="state.isError ? 'error' : 'info'"
-                    />
+                    <Alert />
                 </v-col>
             </v-row>
         </div>
