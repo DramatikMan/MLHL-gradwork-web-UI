@@ -5,9 +5,10 @@ const state = store.use();
 
 <template>
     <v-select
-        v-model:model-value="state.selectedCategory"
         hint="Vegetable category"
         persistent-hint
-        :items="Object.keys(state.categories)"
+        :items="[undefined, ...Object.keys(state.categories)]"
+        :model-value="state.selectedCategory"
+        @update:model-value="(v) => state.setSelectedCategory(v ?? null)"
     />
 </template>

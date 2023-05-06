@@ -7,7 +7,7 @@ const initial: t.State = {
     loading: true,
     categories: {},
     selectedQuantity: 1,
-    selectedCategory: "Bean",
+    selectedCategory: null,
     requesting: false,
     images: [],
     isError: false,

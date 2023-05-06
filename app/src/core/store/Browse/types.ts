@@ -6,7 +6,7 @@ export interface State {
     loading: boolean;
     categories: Record<string, number>;
     selectedQuantity: number;
-    selectedCategory: string;
+    selectedCategory: string | null;
     requesting: boolean;
     images: string[];
     isError: boolean;

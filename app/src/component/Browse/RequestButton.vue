@@ -8,14 +8,12 @@ const apiURL = config.get("BACKEND_API_URL");
 
 async function onRequest() {
     state.setRequesting(true);
+    const requestURL = [`${apiURL}/image/sample`, `?qty=${state.selectedQuantity}`];
 
-    const response = await fetch(
-        [
-            `${apiURL}/image/sample`,
-            `?category_uid=${state.categories[state.selectedCategory]}`,
-            `&qty=${state.selectedQuantity}`,
-        ].join(""),
-    );
+    if (state.selectedCategory !== null)
+        requestURL.push(`&category_uid=${state.categories[state.selectedCategory]}`);
+
+    const response = await fetch(requestURL.join(""));
 
     if (response.ok) {
         const data: string[] = await response.json();
