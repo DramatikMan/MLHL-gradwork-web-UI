@@ -58,6 +58,6 @@ async function onPredict() {
 
 <template>
     <v-btn block :loading="state.processing" @click.prevent="onPredict">
-        {{ $vuetify.locale.t("$vuetify.gwui.upload.button") }}
+        {{ $vuetify.locale.t("upload.button") }}
     </v-btn>
 </template>

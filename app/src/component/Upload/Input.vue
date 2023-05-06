@@ -22,7 +22,7 @@ async function onUpdate(files: File[]) {
         persistent-hint
         prepend-icon="mdi-camera"
         variant="solo"
-        :hint="$vuetify.locale.t('$vuetify.gwui.upload.hint')"
+        :hint="$vuetify.locale.t('upload.hint')"
         @update:model-value="onUpdate"
     />
 </template>

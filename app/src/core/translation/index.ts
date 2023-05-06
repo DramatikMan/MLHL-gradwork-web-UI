@@ -11,8 +11,8 @@ export const options = {
     locale: localeRU,
     fallbackLocale: localeEN,
     messages: {
-        [localeRU]: {$vuetify: ruRU},
-        [localeEN]: {$vuetify: enGB},
+        [localeRU]: ruRU,
+        [localeEN]: enGB,
     },
 };
 

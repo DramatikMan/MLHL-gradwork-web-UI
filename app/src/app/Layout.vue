@@ -25,11 +25,11 @@ const {current} = useLocale();
     <v-bottom-navigation v-model="state.tab" grow color="primary">
         <v-btn value="Browse">
             <v-icon>mdi-folder-open</v-icon>
-            {{ $vuetify.locale.t(`$vuetify.gwui.browse.title`) }}
+            {{ $vuetify.locale.t(`browse.title`) }}
         </v-btn>
         <v-btn value="Upload">
             <v-icon>mdi-upload</v-icon>
-            {{ $vuetify.locale.t(`$vuetify.gwui.upload.title`) }}
+            {{ $vuetify.locale.t(`upload.title`) }}
         </v-btn>
     </v-bottom-navigation>
 </template>

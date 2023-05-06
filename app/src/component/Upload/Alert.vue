@@ -12,15 +12,11 @@ const state = store.use();
         :icon="state.isError ? 'mdi-emoticon-cry' : 'mdi-check-circle'"
         :text="
             (state.isError
-                ? $vuetify.locale.t(`$vuetify.gwui.alert.text.${state.resultStatus}`)
-                : `${$vuetify.locale.t('$vuetify.gwui.upload.result.categoryPrefix')}: ` +
-                  $vuetify.locale.t(`$vuetify.gwui.category.${state.predicted}`).toLowerCase()) ??
-            undefined
+                ? $vuetify.locale.t(`alert.text.${state.resultStatus}`)
+                : `${$vuetify.locale.t('upload.result.categoryPrefix')}: ` +
+                  $vuetify.locale.t(`category.${state.predicted}`).toLowerCase()) ?? undefined
         "
-        :title="
-            $vuetify.locale.t(`$vuetify.gwui.alert.title.${state.isError ? 'error' : 'success'}`) +
-            '!'
-        "
+        :title="$vuetify.locale.t(`alert.title.${state.isError ? 'error' : 'success'}`) + '!'"
         :type="state.isError ? 'error' : 'success'"
     />
 </template>

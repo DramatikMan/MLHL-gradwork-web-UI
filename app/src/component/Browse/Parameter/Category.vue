@@ -9,11 +9,11 @@ const state = store.use();
         :items="[
             {title: null, value: null},
             ...Object.keys(state.categories).map((v) => ({
-                title: $vuetify.locale.t(`$vuetify.gwui.category.${v}`),
+                title: $vuetify.locale.t(`category.${v}`),
                 value: v,
             })),
         ]"
-        :hint="$vuetify.locale.t('$vuetify.gwui.browse.params.category.hint')"
+        :hint="$vuetify.locale.t('browse.params.category.hint')"
         :model-value="state.selectedCategory"
         @update:model-value="(v) => state.setSelectedCategory(v)"
     />

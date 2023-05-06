@@ -9,8 +9,8 @@ const state = store.use();
         variant="text"
         :title="
             state.isError
-                ? $vuetify.locale.t('$vuetify.gwui.alert.text.error')
-                : $vuetify.locale.t('$vuetify.gwui.browse.empty')
+                ? $vuetify.locale.t('alert.text.error')
+                : $vuetify.locale.t('browse.empty')
         "
         :type="state.isError ? 'error' : 'info'"
     />

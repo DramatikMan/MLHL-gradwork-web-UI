@@ -1,57 +1,57 @@
 {
-    "gwui": {
-        "category": {
-            "any": "Any",
-            "Bean": "Bean",
-            "Bitter_Gourd": "Bitter gourd",
-            "Bottle_Gourd": "Bottle gourd",
-            "Brinjal": "Brinjal",
-            "Broccoli": "Broccoli",
-            "Cabbage": "Cabbage",
-            "Capsicum": "Capsicum",
-            "Carrot": "Carrot",
-            "Cauliflower": "Cauliflower",
-            "Cucumber": "Cucumber",
-            "Papaya": "Papaya",
-            "Potato": "Potato",
-            "Pumpkin": "Pumpkin",
-            "Radish": "Radish",
-            "Tomato": "Tomato"
-        },
-        "browse": {
-            "title": "Browse",
-            "empty": "Sorry, no images fitting your request were found",
-            "params": {
-                "category": {
-                    "hint": "Vegetable category"
-                },
-                "quantity": {
-                    "hint": "Number of images to request"
-                }
-            }
-        },
-        "upload": {
-            "result": {
-                "timeout": "Sorry, could not get a prediction in time",
-                "categoryPrefix": "Predicted category"
+    "category": {
+        "any": "Any",
+        "Bean": "Bean",
+        "Bitter_Gourd": "Bitter gourd",
+        "Bottle_Gourd": "Bottle gourd",
+        "Brinjal": "Brinjal",
+        "Broccoli": "Broccoli",
+        "Cabbage": "Cabbage",
+        "Capsicum": "Capsicum",
+        "Carrot": "Carrot",
+        "Cauliflower": "Cauliflower",
+        "Cucumber": "Cucumber",
+        "Papaya": "Papaya",
+        "Potato": "Potato",
+        "Pumpkin": "Pumpkin",
+        "Radish": "Radish",
+        "Tomato": "Tomato"
+    },
+    "browse": {
+        "title": "Browse",
+        "empty": "Sorry, no images fitting your request were found",
+        "params": {
+            "category": {
+                "hint": "Vegetable category"
             },
-            "hint": "Select a square JPG image",
-            "title": "Upload",
-            "button": "Get prediction"
-        },
-        "alert": {
-            "title": {
-                "error": "Error",
-                "success": "Success"
-            },
-            "text": {
-                "error": "Sorry, something went wrong"
+            "quantity": {
+                "hint": "Number of images to request"
             }
         }
     },
-    "close": "Close",
-    "input": {
-        "clear": "",
-        "prependAction": ""
+    "upload": {
+        "result": {
+            "timeout": "Sorry, could not get a prediction in time",
+            "categoryPrefix": "Predicted category"
+        },
+        "hint": "Select a square JPG image",
+        "title": "Upload",
+        "button": "Get prediction"
+    },
+    "alert": {
+        "title": {
+            "error": "Error",
+            "success": "Success"
+        },
+        "text": {
+            "error": "Sorry, something went wrong"
+        }
+    },
+    "$vuetify": {
+        "close": "Close",
+        "input": {
+            "clear": "",
+            "prependAction": ""
+        }
     }
 }
