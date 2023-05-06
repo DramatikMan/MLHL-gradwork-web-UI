@@ -18,11 +18,11 @@ async function onUpdate(files: File[]) {
     <v-file-input
         accept="image/jpeg"
         density="compact"
-        hint="Select a square JPG image"
         persistent-clear
         persistent-hint
         prepend-icon="mdi-camera"
         variant="solo"
+        :hint="$vuetify.locale.t('$vuetify.gwui.upload.hint')"
         @update:model-value="onUpdate"
     />
 </template>

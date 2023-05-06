@@ -5,10 +5,16 @@ const state = store.use();
 
 <template>
     <v-select
-        hint="Vegetable category"
         persistent-hint
-        :items="[undefined, ...Object.keys(state.categories)]"
+        :items="[
+            {title: null, value: null},
+            ...Object.keys(state.categories).map((v) => ({
+                title: $vuetify.locale.t(`$vuetify.gwui.category.${v}`),
+                value: v,
+            })),
+        ]"
+        :hint="$vuetify.locale.t('$vuetify.gwui.browse.params.category.hint')"
         :model-value="state.selectedCategory"
-        @update:model-value="(v) => state.setSelectedCategory(v ?? null)"
+        @update:model-value="(v) => state.setSelectedCategory(v)"
     />
 </template>

@@ -6,8 +6,8 @@ const state = store.use();
 <template>
     <v-select
         v-model:model-value="state.selectedQuantity"
-        hint="Number of images to request"
         persistent-hint
+        :hint="$vuetify.locale.t('$vuetify.gwui.browse.params.quantity.hint')"
         :items="[...Array(9).keys()].map((v) => v + 1)"
     />
 </template>

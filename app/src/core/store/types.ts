@@ -11,7 +11,7 @@ export interface Getters {
 }
 
 export interface Actions {
-    setTab: (value: Tab) => void;
+    setTab: (value: State["tab"]) => void;
 }
 
 export type Store = StoreDefinition<"main", State, Getters, Actions>;

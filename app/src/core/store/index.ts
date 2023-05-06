@@ -1,15 +1,15 @@
 import {defineStore} from "pinia";
 
-import * as t from "./types";
+import * as types from "./types";
 
-const initial: t.State = {
+const initial: types.State = {
     tab: "Browse",
 };
 
-export const use: t.Store = defineStore("main", {
+export const use: types.Store = defineStore("main", {
     state: () => initial,
     actions: {
-        setTab(value: t.Tab) {
+        setTab(value: types.Tab) {
             this.tab = value;
         },
     },

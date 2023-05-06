@@ -32,7 +32,8 @@ async function onPredict() {
 
             if (data.category !== null) {
                 state.setProcessing(false);
-                state.setAlertText(`Predicted category: ${data.category.title}`);
+                state.setPredicted(data.category.title);
+                state.setResultStatus("success");
                 break;
             }
 
@@ -40,13 +41,13 @@ async function onPredict() {
         }
 
         if (state.processing) {
-            state.setAlertText(`Could not get a prediction within ${maxResultChecks} second(s)`);
+            state.setResultStatus("timeout");
             state.setIsError(true);
         }
     } else {
         const err: T.APIError = await response.json();
         console.error(err.detail);
-        state.setAlertText("Sorry, something went wrong");
+        state.setResultStatus("error");
         state.setIsError(true);
     }
 
@@ -56,5 +57,7 @@ async function onPredict() {
 </script>
 
 <template>
-    <v-btn block :loading="state.processing" @click.prevent="onPredict"> Get prediction </v-btn>
+    <v-btn block :loading="state.processing" @click.prevent="onPredict">
+        {{ $vuetify.locale.t("$vuetify.gwui.upload.button") }}
+    </v-btn>
 </template>

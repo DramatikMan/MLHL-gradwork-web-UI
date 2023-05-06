@@ -67,9 +67,3 @@ if (Object.keys(state.categories).length === 0) {
         </div>
     </div>
 </template>
-
-<style scoped>
-div.v-alert {
-    justify-content: center;
-}
-</style>

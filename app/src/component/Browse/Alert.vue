@@ -9,8 +9,8 @@ const state = store.use();
         variant="text"
         :title="
             state.isError
-                ? 'Sorry, something went wrong'
-                : 'Sorry, no images fitting your request were found'
+                ? $vuetify.locale.t('$vuetify.gwui.alert.text.error')
+                : $vuetify.locale.t('$vuetify.gwui.browse.empty')
         "
         :type="state.isError ? 'error' : 'info'"
     />

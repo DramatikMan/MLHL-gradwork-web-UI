@@ -1,28 +1,32 @@
 import {defineStore} from "pinia";
 
-import * as t from "./types";
+import * as types from "./types";
 
-const initial: t.State = {
+const initial: types.State = {
     processing: false,
+    predicted: null,
     isError: false,
     showAlert: false,
-    alertText: null,
+    resultStatus: null,
 };
 
-export const use: t.Store = defineStore("Upload", {
+export const use: types.Store = defineStore("Upload", {
     state: () => initial,
     actions: {
-        setProcessing(value: t.State["processing"]) {
+        setProcessing(value: types.State["processing"]) {
             this.processing = value;
         },
-        setIsError(value: t.State["isError"]) {
+        setPredicted(value: types.State["predicted"]) {
+            this.predicted = value;
+        },
+        setIsError(value: types.State["isError"]) {
             this.isError = value;
         },
-        setShowAlert(value: t.State["showAlert"]) {
+        setShowAlert(value: types.State["showAlert"]) {
             this.showAlert = value;
         },
-        setAlertText(value: t.State["alertText"]) {
-            this.alertText = value;
+        setResultStatus(value: types.State["resultStatus"]) {
+            this.resultStatus = value;
         },
     },
 });

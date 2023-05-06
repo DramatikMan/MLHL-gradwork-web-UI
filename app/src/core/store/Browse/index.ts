@@ -1,9 +1,9 @@
 import {defineStore} from "pinia";
 
 import type {Category} from "😺/types";
-import * as t from "./types";
+import * as types from "./types";
 
-const initial: t.State = {
+const initial: types.State = {
     loading: true,
     categories: {},
     selectedQuantity: 1,
@@ -14,10 +14,10 @@ const initial: t.State = {
     showImages: false,
 };
 
-export const use: t.Store = defineStore("Browse", {
+export const use: types.Store = defineStore("Browse", {
     state: () => initial,
     actions: {
-        setLoading(value: t.State["loading"]) {
+        setLoading(value: types.State["loading"]) {
             this.loading = value;
         },
         setCategories(value: Category[]) {
@@ -25,22 +25,22 @@ export const use: t.Store = defineStore("Browse", {
             for (const category of value) categories[category.title] = category.uid;
             this.categories = categories;
         },
-        setSelectedQuantity(value: t.State["selectedQuantity"]) {
+        setSelectedQuantity(value: types.State["selectedQuantity"]) {
             this.selectedQuantity = value;
         },
-        setSelectedCategory(value: t.State["selectedCategory"]) {
+        setSelectedCategory(value: types.State["selectedCategory"]) {
             this.selectedCategory = value;
         },
-        setRequesting(value: t.State["requesting"]) {
+        setRequesting(value: types.State["requesting"]) {
             this.requesting = value;
         },
-        setImages(value: t.State["images"]) {
+        setImages(value: types.State["images"]) {
             this.images = value;
         },
-        setIsError(value: t.State["isError"]) {
+        setIsError(value: types.State["isError"]) {
             this.isError = value;
         },
-        setShowImages(value: t.State["showImages"]) {
+        setShowImages(value: types.State["showImages"]) {
             this.showImages = value;
         },
     },
