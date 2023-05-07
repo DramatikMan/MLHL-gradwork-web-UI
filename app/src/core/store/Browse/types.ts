@@ -1,11 +1,14 @@
 import type {StoreDefinition} from "pinia";
 
 import * as T from "😺/types";
+import * as config from "😺/core/config";
+
+export type Palette = keyof typeof config.color.options;
 
 export interface Request {
     quantity: number;
     category: string | null;
-    palette: string | null;
+    palette: Palette;
     color: string | null;
 }
 
@@ -28,7 +31,7 @@ export interface Actions {
     setCategories: (value: T.Category[]) => void;
     setRequestQuantity: (value: Request["quantity"]) => void;
     setRequestCategory: (value: Request["category"]) => void;
-    setRequestPalette: (value: Request["palette"]) => void;
+    setRequestPalette: (value: Palette) => void;
     setRequestColor: (value: Request["color"]) => void;
     setRequesting: (value: State["requesting"]) => void;
     setImages: (value: State["images"]) => void;

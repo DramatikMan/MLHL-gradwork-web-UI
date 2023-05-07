@@ -1,3 +1,5 @@
+export * as color from "./color";
+
 type Values = typeof window.config;
 
 class Config {

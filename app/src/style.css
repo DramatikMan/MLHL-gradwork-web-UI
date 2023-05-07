@@ -1,0 +1,4 @@
+div.gwui-grid-h-centered {
+    display: grid;
+    justify-items: center;
+}

@@ -9,7 +9,7 @@ const initial: types.State = {
     request: {
         quantity: 1,
         category: null,
-        palette: null,
+        palette: "RGB",
         color: null,
     },
     requesting: false,
@@ -35,7 +35,7 @@ export const use: types.Store = defineStore("Browse", {
         setRequestCategory(value: types.Request["category"]) {
             this.request.category = value;
         },
-        setRequestPalette(value: types.Request["palette"]) {
+        setRequestPalette(value: types.Palette) {
             this.request.palette = value;
         },
         setRequestColor(value: types.Request["color"]) {

@@ -8,7 +8,7 @@ const {current} = useLocale();
 
 <template>
     <v-app-bar>
-        <div class="locale-toggle">
+        <div class="gwui-locale-toggle">
             <v-btn-toggle v-model="current">
                 <v-btn value="en">EN</v-btn>
                 <v-btn value="ru">RU</v-btn>
@@ -35,7 +35,7 @@ const {current} = useLocale();
 </template>
 
 <style scoped>
-.locale-toggle {
+div.gwui-locale-toggle {
     width: 100%;
     display: grid;
     justify-items: center;

@@ -12,7 +12,7 @@ const file = ref<File | null>(null);
 
 <template>
     <v-row justify="center">
-        <v-col cols="6" style="width: 70svh">
+        <v-col cols="6" style="width: 70svw">
             <Input v-model="file" />
         </v-col>
     </v-row>

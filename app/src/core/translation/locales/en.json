@@ -26,6 +26,12 @@
             },
             "quantity": {
                 "hint": "Number of images to request"
+            },
+            "palette": {
+                "hint": "Dominant color palette"
+            },
+            "color": {
+                "hint": "Dominant image color filter"
             }
         }
     },
@@ -50,8 +56,10 @@
     "$vuetify": {
         "close": "Close",
         "input": {
-            "clear": "",
+            "clear": "Сlear",
             "prependAction": ""
-        }
+        },
+        "save": "Save",
+        "update": "Update"
     }
 }
