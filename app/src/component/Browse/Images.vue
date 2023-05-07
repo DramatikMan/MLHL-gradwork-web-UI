@@ -14,6 +14,7 @@ const props = defineProps<{links: string[]}>();
                     height="min(224px, 10rem)"
                     width="min(224px, 10rem)"
                     transition="expand-transition"
+                    lazy-src="/placeholder.png"
                     :src="link.value"
                 />
             </div>

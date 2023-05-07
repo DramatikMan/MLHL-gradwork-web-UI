@@ -33,6 +33,6 @@ async function onRequest() {
 
 <template>
     <v-btn size="3rem" block :loading="state.requesting" @click.prevent="onRequest">
-        <v-icon icon="mdi-cloud-refresh-outline" size="2rem" />
+        <v-icon icon="mdi-refresh" size="2rem" />
     </v-btn>
 </template>
