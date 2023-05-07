@@ -8,10 +8,10 @@ const apiURL = config.get("BACKEND_API_URL");
 
 async function onRequest() {
     state.setRequesting(true);
-    const requestURL = [`${apiURL}/image/sample`, `?qty=${state.selectedQuantity}`];
+    const requestURL = [`${apiURL}/image/sample`, `?qty=${state.request.quantity}`];
 
-    if (state.selectedCategory !== null)
-        requestURL.push(`&category_uid=${state.categories[state.selectedCategory]}`);
+    if (state.request.category !== null)
+        requestURL.push(`&category_uid=${state.categories[state.request.category]}`);
 
     const response = await fetch(requestURL.join(""));
 

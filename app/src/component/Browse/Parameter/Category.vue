@@ -14,7 +14,7 @@ const state = store.use();
             })),
         ]"
         :hint="$vuetify.locale.t('browse.params.category.hint')"
-        :model-value="state.selectedCategory"
-        @update:model-value="(v) => state.setSelectedCategory(v)"
+        :model-value="state.request.category"
+        @update:model-value="(v) => state.setRequestCategory(v)"
     />
 </template>

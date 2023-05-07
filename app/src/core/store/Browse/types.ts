@@ -2,11 +2,17 @@ import type {StoreDefinition} from "pinia";
 
 import * as T from "😺/types";
 
+export interface Request {
+    quantity: number;
+    category: string | null;
+    palette: string | null;
+    color: string | null;
+}
+
 export interface State {
     loading: boolean;
     categories: Record<string, number>;
-    selectedQuantity: number;
-    selectedCategory: string | null;
+    request: Request;
     requesting: boolean;
     images: string[];
     isError: boolean;
@@ -20,8 +26,10 @@ export interface Getters {
 export interface Actions {
     setLoading: (value: State["loading"]) => void;
     setCategories: (value: T.Category[]) => void;
-    setSelectedQuantity: (value: State["selectedQuantity"]) => void;
-    setSelectedCategory: (value: State["selectedCategory"]) => void;
+    setRequestQuantity: (value: Request["quantity"]) => void;
+    setRequestCategory: (value: Request["category"]) => void;
+    setRequestPalette: (value: Request["palette"]) => void;
+    setRequestColor: (value: Request["color"]) => void;
     setRequesting: (value: State["requesting"]) => void;
     setImages: (value: State["images"]) => void;
     setIsError: (value: State["isError"]) => void;

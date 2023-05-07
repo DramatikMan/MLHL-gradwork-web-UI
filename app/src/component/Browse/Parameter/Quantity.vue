@@ -5,7 +5,7 @@ const state = store.use();
 
 <template>
     <v-select
-        v-model:model-value="state.selectedQuantity"
+        v-model:model-value="state.request.quantity"
         persistent-hint
         :hint="$vuetify.locale.t('browse.params.quantity.hint')"
         :items="[...Array(9).keys()].map((v) => v + 1)"

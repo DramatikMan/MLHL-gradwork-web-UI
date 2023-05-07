@@ -6,8 +6,12 @@ import * as types from "./types";
 const initial: types.State = {
     loading: true,
     categories: {},
-    selectedQuantity: 1,
-    selectedCategory: null,
+    request: {
+        quantity: 1,
+        category: null,
+        palette: null,
+        color: null,
+    },
     requesting: false,
     images: [],
     isError: false,
@@ -25,11 +29,17 @@ export const use: types.Store = defineStore("Browse", {
             for (const category of value) categories[category.title] = category.uid;
             this.categories = categories;
         },
-        setSelectedQuantity(value: types.State["selectedQuantity"]) {
-            this.selectedQuantity = value;
+        setRequestQuantity(value: types.Request["quantity"]) {
+            this.request.quantity = value;
         },
-        setSelectedCategory(value: types.State["selectedCategory"]) {
-            this.selectedCategory = value;
+        setRequestCategory(value: types.Request["category"]) {
+            this.request.category = value;
+        },
+        setRequestPalette(value: types.Request["palette"]) {
+            this.request.palette = value;
+        },
+        setRequestColor(value: types.Request["color"]) {
+            this.request.color = value;
         },
         setRequesting(value: types.State["requesting"]) {
             this.requesting = value;
