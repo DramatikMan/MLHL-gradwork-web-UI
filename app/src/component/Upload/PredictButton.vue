@@ -49,6 +49,7 @@ async function onPredict() {
 
         if (err.extra === null) {
             state.setAlertErrorReason("other");
+            state.setProcessing(false);
             return;
         } else if ("type" in err.extra) {
             state.setAlertErrorReason("type");
