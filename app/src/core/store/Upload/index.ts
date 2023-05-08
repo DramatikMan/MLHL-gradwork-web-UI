@@ -5,9 +5,11 @@ import * as types from "./types";
 const initial: types.State = {
     processing: false,
     predicted: null,
-    isError: false,
-    showAlert: false,
-    resultStatus: null,
+    alert: {
+        status: null,
+        errorReason: null,
+        text: null,
+    },
 };
 
 export const use: types.Store = defineStore("Upload", {
@@ -19,14 +21,14 @@ export const use: types.Store = defineStore("Upload", {
         setPredicted(value: types.State["predicted"]) {
             this.predicted = value;
         },
-        setIsError(value: types.State["isError"]) {
-            this.isError = value;
+        setAlertStatus(value: types.Alert["status"]) {
+            this.alert.status = value;
         },
-        setShowAlert(value: types.State["showAlert"]) {
-            this.showAlert = value;
+        setAlertErrorReason(value: types.Alert["errorReason"]) {
+            this.alert.errorReason = value;
         },
-        setResultStatus(value: types.State["resultStatus"]) {
-            this.resultStatus = value;
+        setAlertText(value: types.Alert["text"]) {
+            this.alert.text = value;
         },
     },
 });

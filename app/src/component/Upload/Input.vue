@@ -6,8 +6,9 @@ const emit = defineEmits<{(event: "update:modelValue", value: File): void}>();
 const state = store.use();
 
 async function onUpdate(files: File[]) {
-    state.setIsError(false);
-    state.setShowAlert(false);
+    state.setAlertStatus(null);
+    state.setAlertErrorReason(null);
+    state.setAlertText(null);
     const file = files[0];
     if (file === undefined) return;
     emit("update:modelValue", file);

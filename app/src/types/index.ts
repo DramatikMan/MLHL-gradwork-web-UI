@@ -39,6 +39,7 @@ export interface Image {
     color_RYB: ColorRYB | null;
 }
 
-export interface APIError {
+export interface APIError<Extra extends object = object> {
     detail: string;
+    extra: Extra | null;
 }

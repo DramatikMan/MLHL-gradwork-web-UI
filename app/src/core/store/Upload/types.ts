@@ -1,11 +1,15 @@
 import type {StoreDefinition} from "pinia";
 
+export interface Alert {
+    status: "error" | "success" | "timeout" | null;
+    errorReason: "type" | "size" | "other" | null;
+    text: string | null;
+}
+
 export interface State {
     processing: boolean;
     predicted: string | null;
-    isError: boolean;
-    showAlert: boolean;
-    resultStatus: "error" | "success" | "timeout" | null;
+    alert: Alert;
 }
 
 export interface Getters {
@@ -15,9 +19,9 @@ export interface Getters {
 export interface Actions {
     setProcessing: (value: State["processing"]) => void;
     setPredicted: (value: State["predicted"]) => void;
-    setIsError: (value: State["isError"]) => void;
-    setShowAlert: (value: State["showAlert"]) => void;
-    setResultStatus: (value: State["resultStatus"]) => void;
+    setAlertStatus: (value: Alert["status"]) => void;
+    setAlertErrorReason: (value: Alert["errorReason"]) => void;
+    setAlertText: (value: Alert["text"]) => void;
 }
 
 export type Store = StoreDefinition<"Upload", State, Getters, Actions>;

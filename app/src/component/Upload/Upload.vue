@@ -16,7 +16,7 @@ const file = ref<File | null>(null);
             <Input v-model="file" />
         </v-col>
     </v-row>
-    <div v-if="state.showAlert">
+    <div v-if="state.alert.status !== null">
         <v-row justify="center">
             <v-col cols="6">
                 <Alert />

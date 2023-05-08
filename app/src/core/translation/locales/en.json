@@ -37,8 +37,15 @@
     },
     "upload": {
         "result": {
+            "categoryPrefix": "Predicted category",
             "timeout": "Sorry, could not get a prediction in time",
-            "categoryPrefix": "Predicted category"
+            "error": {
+                "type": {
+                    "expected": "Expected a JPG image",
+                    "got": ", but got "
+                },
+                "size": "Expected a square image, but got size: "
+            }
         },
         "hint": "Select a square JPG image",
         "title": "Upload",
