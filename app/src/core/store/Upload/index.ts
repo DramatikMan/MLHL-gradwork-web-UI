@@ -4,7 +4,7 @@ import * as types from "./types";
 
 const initial: types.State = {
     processing: false,
-    predicted: null,
+    response: null,
     alert: {
         status: null,
         errorReason: null,
@@ -18,8 +18,8 @@ export const use: types.Store = defineStore("Upload", {
         setProcessing(value: types.State["processing"]) {
             this.processing = value;
         },
-        setPredicted(value: types.State["predicted"]) {
-            this.predicted = value;
+        setResponse(value: types.State["response"]) {
+            this.response = value;
         },
         setAlertStatus(value: types.Alert["status"]) {
             this.alert.status = value;
@@ -29,6 +29,10 @@ export const use: types.Store = defineStore("Upload", {
         },
         setAlertText(value: types.Alert["text"]) {
             this.alert.text = value;
+        },
+        reset() {
+            this.response = null;
+            this.alert = {status: null, errorReason: null, text: null};
         },
     },
 });

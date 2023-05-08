@@ -2,15 +2,18 @@
 import * as store from "😺/core/store/Upload";
 
 defineProps<{modelValue: File | null}>();
-const emit = defineEmits<{(event: "update:modelValue", value: File): void}>();
+const emit = defineEmits<{(event: "update:modelValue", value: File | null): void}>();
 const state = store.use();
 
 async function onUpdate(files: File[]) {
-    state.setAlertStatus(null);
-    state.setAlertErrorReason(null);
-    state.setAlertText(null);
+    state.reset();
     const file = files[0];
-    if (file === undefined) return;
+
+    if (file === undefined) {
+        emit("update:modelValue", null);
+        return;
+    }
+
     emit("update:modelValue", file);
 }
 </script>

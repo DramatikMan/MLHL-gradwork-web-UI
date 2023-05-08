@@ -1,5 +1,7 @@
 import type {StoreDefinition} from "pinia";
 
+import * as T from "😺/types";
+
 export interface Alert {
     status: "error" | "success" | "timeout" | null;
     errorReason: "type" | "size" | "other" | null;
@@ -8,7 +10,7 @@ export interface Alert {
 
 export interface State {
     processing: boolean;
-    predicted: string | null;
+    response: T.Image | null;
     alert: Alert;
 }
 
@@ -18,10 +20,11 @@ export interface Getters {
 
 export interface Actions {
     setProcessing: (value: State["processing"]) => void;
-    setPredicted: (value: State["predicted"]) => void;
+    setResponse: (value: State["response"]) => void;
     setAlertStatus: (value: Alert["status"]) => void;
     setAlertErrorReason: (value: Alert["errorReason"]) => void;
     setAlertText: (value: Alert["text"]) => void;
+    reset: () => void;
 }
 
 export type Store = StoreDefinition<"Upload", State, Getters, Actions>;

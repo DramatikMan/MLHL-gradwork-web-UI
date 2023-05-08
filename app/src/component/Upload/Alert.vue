@@ -44,8 +44,8 @@ const text = computed<string | null>(() => {
             out = t("upload.result.timeout");
             break;
         case "success": {
-            const category = t(`category.${state.predicted}`);
-            out = `${t("upload.result.categoryPrefix")}: ${category}`;
+            const category = t(`category.${state.response?.category?.title}`);
+            out = `${t("upload.result.categoryPrefix")}: ${category.toLocaleLowerCase()}`;
             break;
         }
     }
@@ -59,11 +59,39 @@ const text = computed<string | null>(() => {
         v-model="show"
         closable
         density="compact"
-        variant="tonal"
         :icon="success ? 'mdi-check-circle' : 'mdi-emoticon-cry'"
         :text="text ?? ''"
         :title="$vuetify.locale.t(`alert.title.${success ? 'success' : 'error'}`) + '!'"
         :type="success ? 'success' : 'error'"
-        @update:model-value="() => state.setAlertStatus(null)"
-    />
+        :variant="success ? 'text' : 'tonal'"
+        @update:model-value="() => state.reset()"
+    >
+        <div v-if="success">
+            <div>{{ $vuetify.locale.t("upload.result.dominantColor") }}:</div>
+            <div>
+                RGB:
+                <v-tbn
+                    disabled
+                    :style="{
+                        'background-color': state.response?.color_RGB,
+                        color: state.response?.color_RGB,
+                    }"
+                    >{{ state.response?.color_RGB }}</v-tbn
+                >
+                {{ state.response?.color_RGB }}
+            </div>
+            <div>
+                RYB:
+                <v-tbn
+                    disabled
+                    :style="{
+                        'background-color': state.response?.color_RYB,
+                        color: state.response?.color_RYB,
+                    }"
+                    >{{ state.response?.color_RYB }}</v-tbn
+                >
+                {{ state.response?.color_RYB }}
+            </div>
+        </div>
+    </v-alert>
 </template>

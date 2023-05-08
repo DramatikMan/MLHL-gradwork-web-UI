@@ -38,6 +38,7 @@
     "upload": {
         "result": {
             "categoryPrefix": "Predicted category",
+            "dominantColor": "Dominant color by palette",
             "timeout": "Sorry, could not get a prediction in time",
             "error": {
                 "type": {

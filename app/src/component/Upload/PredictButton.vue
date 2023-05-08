@@ -33,7 +33,7 @@ async function onPredict() {
 
             if (data.category !== null) {
                 state.setProcessing(false);
-                state.setPredicted(data.category.title);
+                state.setResponse(data);
                 state.setAlertStatus("success");
                 break;
             }
@@ -41,9 +41,7 @@ async function onPredict() {
             await sleep(msCheckDelay);
         }
 
-        if (state.processing) {
-            state.setAlertStatus("timeout");
-        }
+        if (state.processing) state.setAlertStatus("timeout");
     } else {
         const err: PostImageAPIError = await response.json();
         console.error(err.detail);
