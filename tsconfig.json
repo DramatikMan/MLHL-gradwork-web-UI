@@ -13,7 +13,7 @@
         "noUnusedParameters": true,
         "strict": true,
         // Modules
-        "baseUrl": "app/src",
+        "baseUrl": "gwui/src",
         "module": "ESNext",
         "moduleResolution": "node",
         "paths": {"😺/*": ["./*"]},
@@ -32,6 +32,6 @@
         // Completeness
         "skipLibCheck": true
     },
-    "include": ["app/src/**/*.ts", "app/src/**/*.tsx", "app/src/**/*.vue"],
+    "include": ["gwui/src/**/*.ts", "gwui/src/**/*.tsx", "gwui/src/**/*.vue"],
     "references": [{"path": "./vite.tsconfig.json"}]
 }

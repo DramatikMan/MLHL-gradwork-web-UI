@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY .npmrc package.json package-lock.json* ./
 RUN npm ci
-COPY app app
+COPY gwui gwui
 
 ##################
 FROM base AS builder

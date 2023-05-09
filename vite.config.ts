@@ -6,7 +6,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    root: "app",
+    root: "gwui",
     assetsInclude: ["public"],
     server: {host: "0.0.0.0", port: 3005},
     build: {
@@ -17,12 +17,12 @@ export default defineConfig({
         drop: ["console"],
     },
     resolve: {
-        alias: {"😺": path.resolve(__dirname, "app/src")},
+        alias: {"😺": path.resolve(__dirname, "gwui/src")},
     },
     plugins: [
         vue(),
         VueI18nPlugin({
-            include: [path.resolve(__dirname, "app/src/core/translation/locales/**")],
+            include: [path.resolve(__dirname, "gwui/src/core/translation/locales/**")],
         }),
         eslintPlugin({
             failOnWarning: true,
