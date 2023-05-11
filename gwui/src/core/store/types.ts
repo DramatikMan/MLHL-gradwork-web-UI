@@ -3,7 +3,7 @@ import type {StoreDefinition} from "pinia";
 export type Tab = "Browse" | "Upload";
 
 export interface State {
-    tab: Tab;
+    tab: Tab | null;
 }
 
 export interface Getters {
@@ -11,7 +11,7 @@ export interface Getters {
 }
 
 export interface Actions {
-    setTab: (value: State["tab"]) => void;
+    setTab: (value: Tab) => void;
 }
 
 export type Store = StoreDefinition<"main", State, Getters, Actions>;

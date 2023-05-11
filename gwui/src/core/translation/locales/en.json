@@ -67,6 +67,7 @@
             "clear": "Сlear",
             "prependAction": ""
         },
+        "pageNotFound": "Page not found",
         "save": "Save",
         "update": "Update"
     }

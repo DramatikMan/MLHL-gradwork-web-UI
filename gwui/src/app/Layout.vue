@@ -23,11 +23,11 @@ const {current} = useLocale();
         <v-spacer />
     </v-container>
     <v-bottom-navigation v-model="state.tab" grow color="primary">
-        <v-btn value="Browse">
+        <v-btn value="Browse" to="/browse">
             <v-icon>mdi-folder-open</v-icon>
             {{ $vuetify.locale.t(`browse.title`) }}
         </v-btn>
-        <v-btn value="Upload">
+        <v-btn value="Upload" to="/upload">
             <v-icon>mdi-upload</v-icon>
             {{ $vuetify.locale.t(`upload.title`) }}
         </v-btn>

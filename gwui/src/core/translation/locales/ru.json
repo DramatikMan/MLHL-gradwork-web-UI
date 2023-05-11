@@ -67,6 +67,7 @@
             "clear": "Cбросить",
             "prependAction": ""
         },
+        "pageNotFound": "Страница не найдена",
         "save": "Сохранить",
         "update": "Изменить"
     }

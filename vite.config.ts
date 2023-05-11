@@ -17,7 +17,10 @@ export default defineConfig({
         drop: ["console"],
     },
     resolve: {
-        alias: {"😺": path.resolve(__dirname, "gwui/src")},
+        alias: {
+            "😺": path.resolve(__dirname, "gwui/src"),
+            vue: "vue/dist/vue.esm-bundler.js",
+        },
     },
     plugins: [
         vue(),

@@ -2,9 +2,7 @@ import {defineStore} from "pinia";
 
 import * as types from "./types";
 
-const initial: types.State = {
-    tab: "Browse",
-};
+const initial: types.State = {tab: null};
 
 export const use: types.Store = defineStore("main", {
     state: () => initial,
@@ -14,3 +12,5 @@ export const use: types.Store = defineStore("main", {
         },
     },
 });
+
+export * as types from "./types";

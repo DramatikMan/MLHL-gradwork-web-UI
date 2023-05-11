@@ -11,7 +11,7 @@ import {createVueI18nAdapter} from "vuetify/locale/adapters/vue-i18n";
 import "@mdi/font/css/materialdesignicons.css";
 
 import "😺/style.css";
-import App from "😺/app";
+import router from "😺/app";
 import * as tl from "😺/core/translation";
 
 const pinia = createPinia();
@@ -24,4 +24,4 @@ const vuetify = createVuetify({
     theme: {defaultTheme: "dark"},
 });
 
-createApp(App).use(pinia).use(i18n).use(vuetify).mount("#app");
+createApp({}).use(router).use(pinia).use(i18n).use(vuetify).mount("#app");
