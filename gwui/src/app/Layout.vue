@@ -16,11 +16,9 @@ const {current} = useLocale();
         </div>
     </v-app-bar>
     <v-container fluid class="fill-height">
-        <v-spacer />
         <v-main>
             <slot></slot>
         </v-main>
-        <v-spacer />
     </v-container>
     <v-bottom-navigation v-model="state.tab" grow color="primary">
         <v-btn value="Browse" to="/browse">

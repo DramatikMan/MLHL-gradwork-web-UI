@@ -39,36 +39,36 @@ if (Object.keys(state.categories).length === 0) {
     </div>
     <div v-else>
         <v-row justify="center">
-            <v-col cols="4" style="width: 15svw">
+            <v-col md="4" xl="2">
                 <Parameter.Quantity />
             </v-col>
-            <v-col cols="6" style="width: 15svw">
+            <v-col md="6" xl="3">
                 <Parameter.Category />
             </v-col>
         </v-row>
         <v-row justify="center">
-            <v-col cols="4" style="width: 15svw">
+            <v-col md="4" xl="2">
                 <Parameter.Palette />
             </v-col>
-            <v-col cols="6" style="width: 15svw">
+            <v-col md="6" xl="3">
                 <Parameter.Color />
             </v-col>
         </v-row>
         <v-row justify="center">
-            <v-col cols="10" style="width: 15svw">
+            <v-col md="10" xl="5">
                 <RequestButton />
             </v-col>
         </v-row>
         <div v-if="state.isError || (state.showImages && state.images.length === 0)">
             <v-row justify="center" :style="{marginTop: 'max(10px, 1svh)'}">
-                <v-col cols="10" style="width: 15svw">
+                <v-col md="6" xl="3">
                     <Alert />
                 </v-col>
             </v-row>
         </div>
         <div v-else-if="state.showImages">
             <v-row justify="center" :style="{marginTop: 'max(10px, 1svh)'}">
-                <v-col cols="10" style="width: 15svw">
+                <v-col md="6" xl="3">
                     <Images :links="state.images" />
                 </v-col>
             </v-row>

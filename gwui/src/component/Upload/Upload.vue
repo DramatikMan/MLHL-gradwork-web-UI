@@ -12,19 +12,19 @@ const file = ref<File | null>(null);
 
 <template>
     <v-row justify="center">
-        <v-col cols="6" style="width: 70svw">
+        <v-col md="6" xl="4">
             <Input v-model="file" />
         </v-col>
     </v-row>
     <div v-if="state.alert.status !== null">
         <v-row justify="center">
-            <v-col cols="6">
+            <v-col md="6" xl="4">
                 <Alert />
             </v-col>
         </v-row>
     </div>
     <v-row justify="center">
-        <v-col cols="6">
+        <v-col md="6" xl="4">
             <PredictButton :file="file" />
         </v-col>
     </v-row>
