@@ -9,6 +9,7 @@ node_modules
 
 ### ~ development ~ ###
 /scripts
+/.vscode
 
 ### ~ Helm ~ ###
 chart/**/*.tgz
