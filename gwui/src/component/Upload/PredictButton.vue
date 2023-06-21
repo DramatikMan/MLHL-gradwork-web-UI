@@ -3,6 +3,7 @@ import * as T from "😺/types";
 import config from "😺/core/config";
 import * as store from "😺/core/store/Upload";
 import type {PostImageAPIError} from "./types";
+import * as util from "./util";
 
 const props = defineProps<{file: File | null}>();
 const state = store.use();
@@ -15,6 +16,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function onPredict() {
     if (props.file === null) return;
+    util.checkImage(props.file);
 
     state.setProcessing(true);
     const payload = new FormData();

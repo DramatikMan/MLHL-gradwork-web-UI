@@ -70,26 +70,30 @@ const text = computed<string | null>(() => {
             <div>{{ $vuetify.locale.t("upload.result.dominantColor") }}:</div>
             <div>
                 RGB:
-                <v-tbn
+                <v-btn
                     disabled
+                    size="x-small"
                     :style="{
-                        'background-color': state.response?.color_RGB,
-                        color: state.response?.color_RGB,
+                        backgroundColor: state.response?.color_RGB ?? 'white',
+                        color: state.response?.color_RGB ?? 'white',
                     }"
-                    >{{ state.response?.color_RGB }}</v-tbn
                 >
+                    {{ state.response?.color_RGB }}
+                </v-btn>
                 {{ state.response?.color_RGB }}
             </div>
             <div>
                 RYB:
-                <v-tbn
+                <v-btn
                     disabled
+                    size="x-small"
                     :style="{
-                        'background-color': state.response?.color_RYB,
-                        color: state.response?.color_RYB,
+                        backgroundColor: state.response?.color_RYB ?? 'white',
+                        color: state.response?.color_RYB ?? 'white',
                     }"
-                    >{{ state.response?.color_RYB }}</v-tbn
                 >
+                    {{ state.response?.color_RYB }}
+                </v-btn>
                 {{ state.response?.color_RYB }}
             </div>
         </div>
