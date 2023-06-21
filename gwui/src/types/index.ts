@@ -37,6 +37,7 @@ export interface Image {
     category: Category | null;
     color_RGB: ColorRGB | null;
     color_RYB: ColorRYB | null;
+    link: string;
 }
 
 export interface APIError<Extra extends object = object> {

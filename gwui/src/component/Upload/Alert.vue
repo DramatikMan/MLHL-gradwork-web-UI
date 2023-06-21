@@ -67,35 +67,50 @@ const text = computed<string | null>(() => {
         @update:model-value="() => state.reset()"
     >
         <div v-if="success">
-            <div>{{ $vuetify.locale.t("upload.result.dominantColor") }}:</div>
-            <div>
-                RGB:
-                <v-btn
-                    disabled
-                    size="x-small"
-                    :style="{
-                        backgroundColor: state.response?.color_RGB ?? 'white',
-                        color: state.response?.color_RGB ?? 'white',
-                    }"
-                >
-                    {{ state.response?.color_RGB }}
-                </v-btn>
-                {{ state.response?.color_RGB }}
-            </div>
-            <div>
-                RYB:
-                <v-btn
-                    disabled
-                    size="x-small"
-                    :style="{
-                        backgroundColor: state.response?.color_RYB ?? 'white',
-                        color: state.response?.color_RYB ?? 'white',
-                    }"
-                >
-                    {{ state.response?.color_RYB }}
-                </v-btn>
-                {{ state.response?.color_RYB }}
-            </div>
+            <v-row>
+                <v-col>
+                    <div>{{ $vuetify.locale.t("upload.result.dominantColor") }}:</div>
+                    <div>
+                        RGB:
+                        <v-btn
+                            disabled
+                            size="x-small"
+                            :style="{
+                                backgroundColor: state.response?.color_RGB ?? 'white',
+                                color: state.response?.color_RGB ?? 'white',
+                            }"
+                        >
+                            {{ state.response?.color_RGB }}
+                        </v-btn>
+                        {{ state.response?.color_RGB }}
+                    </div>
+                    <div>
+                        RYB:
+                        <v-btn
+                            disabled
+                            size="x-small"
+                            :style="{
+                                backgroundColor: state.response?.color_RYB ?? 'white',
+                                color: state.response?.color_RYB ?? 'white',
+                            }"
+                        >
+                            {{ state.response?.color_RYB }}
+                        </v-btn>
+                        {{ state.response?.color_RYB }}
+                    </div>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <v-img
+                        height="min(224px, 10rem)"
+                        width="min(224px, 10rem)"
+                        transition="expand-transition"
+                        lazy-src="/placeholder.png"
+                        :src="state.response?.link ?? '/placeholder.png'"
+                    />
+                </v-col>
+            </v-row>
         </div>
     </v-alert>
 </template>
