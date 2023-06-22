@@ -1,6 +1,5 @@
 import {defineStore} from "pinia";
 
-import type {Category} from "😺/types";
 import * as types from "./types";
 
 const initial: types.State = {
@@ -21,36 +20,36 @@ const initial: types.State = {
 export const use: types.Store = defineStore("Browse", {
     state: () => initial,
     actions: {
-        setLoading(value: types.State["loading"]) {
+        setLoading(value) {
             this.loading = value;
         },
-        setCategories(value: Category[]) {
+        setCategories(value) {
             const categories: Record<string, number> = {};
             for (const category of value) categories[category.title] = category.uid;
             this.categories = categories;
         },
-        setRequestQuantity(value: types.Request["quantity"]) {
+        setRequestQuantity(value) {
             this.request.quantity = value;
         },
-        setRequestCategory(value: types.Request["category"]) {
+        setRequestCategory(value) {
             this.request.category = value;
         },
-        setRequestPalette(value: types.Palette) {
+        setRequestPalette(value) {
             this.request.palette = value;
         },
-        setRequestColor(value: types.Request["color"]) {
+        setRequestColor(value) {
             this.request.color = value;
         },
-        setRequesting(value: types.State["requesting"]) {
+        setRequesting(value) {
             this.requesting = value;
         },
-        setImages(value: types.State["images"]) {
+        setImages(value) {
             this.images = value;
         },
-        setIsError(value: types.State["isError"]) {
+        setIsError(value) {
             this.isError = value;
         },
-        setShowImages(value: types.State["showImages"]) {
+        setShowImages(value) {
             this.showImages = value;
         },
     },

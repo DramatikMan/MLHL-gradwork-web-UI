@@ -9,6 +9,10 @@ export interface Alert {
 }
 
 export interface State {
+    imageIsSquare: boolean;
+    resizing: boolean;
+    prompting: boolean;
+    cropping: boolean;
     processing: boolean;
     response: T.Image | null;
     alert: Alert;
@@ -19,6 +23,10 @@ export interface Getters {
 }
 
 export interface Actions {
+    setImageIsSquare: (value: State["imageIsSquare"]) => void;
+    setResizing: (value: State["resizing"]) => void;
+    setPrompting: (value: State["prompting"]) => void;
+    setCropping: (value: State["cropping"]) => void;
     setProcessing: (value: State["processing"]) => void;
     setResponse: (value: State["response"]) => void;
     setAlertStatus: (value: Alert["status"]) => void;

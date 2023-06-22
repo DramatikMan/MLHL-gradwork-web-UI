@@ -42,15 +42,27 @@
             "timeout": "Sorry, could not get a prediction in time",
             "error": {
                 "type": {
-                    "expected": "Expected a JPG image",
+                    "expected": "Expected a JPG or PNG image",
                     "got": ", but got "
                 },
                 "size": "Expected a square image, but got size: "
             }
         },
-        "hint": "Select a square JPG image",
+        "hint": "Select a square JPG or PNG image",
         "title": "Upload",
-        "button": "Get prediction"
+        "button": "Get prediction",
+        "resize": {
+            "prompting": {
+                "isNotSquare": "The image is not square, would you like to crop it?",
+                "isSquare": "Would you like to crop the image?",
+                "yes": "Yes",
+                "no": "No"
+            },
+            "cropping": {
+                "crop": "Ok",
+                "cancel": "Cancel"
+            }
+        }
     },
     "alert": {
         "title": {

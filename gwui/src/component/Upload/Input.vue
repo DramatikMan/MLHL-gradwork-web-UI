@@ -20,7 +20,7 @@ async function onUpdate(files: File[]) {
 
 <template>
     <v-file-input
-        accept="image/jpeg"
+        accept="image/jpeg,image/png"
         density="compact"
         persistent-clear
         persistent-hint
