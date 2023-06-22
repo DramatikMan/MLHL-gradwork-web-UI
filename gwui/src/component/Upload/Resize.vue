@@ -180,9 +180,8 @@ div.gwui-crop-prompt-dialog {
     align-items: center;
 }
 
-div.wrap-box {
-    min-width: 30rem;
-    min-height: 30rem;
+div.cropper-container,
+div.img-cropper {
     max-width: 30rem;
     max-height: 30rem;
 }
